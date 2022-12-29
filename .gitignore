@@ -1,7 +1,7 @@
 # Project specific
 oca.cfg
 .pytest_cache/
-/.vscode
+#/.vscode
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

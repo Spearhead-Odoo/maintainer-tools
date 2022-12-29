@@ -1,0 +1,80 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: 1 Crear Nueva rama Vacia",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.create_branch",
+            "args": [
+                "16.0", 
+                "--org-name", "Spearhead-Odoo", 
+                "--copier-template-vcs-ref", "spearhead"],
+            "justMyCode": true
+        },
+        {
+            "name": "Python: 2 Generar README",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.gen_addon_readme",
+            "args": [
+                "--org-name", "Spearhead-Odoo", "--repo-name", "odoo_templates", "--branch", "16.0",
+                "--addons-dir", "/mnt/celm1990/Doodba/odoo16_ec/odoo/custom/src/localizacion", 
+                //"--addon-dir", "l10n_ec_extended"
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "Python: 3 Generar ChangeLOG",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.oca_towncrier",
+            "args": [
+                "--org", "Spearhead-Odoo", "--repo", "odoo_templates",
+                "--addon-dir", "/mnt/celm1990/Doodba/odoo16_ec/odoo/custom/src/localizacion/l10n_ec_delivery_note", 
+                //"--addon-dir", "l10n_ec_extended"
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "Python: 4 crear FORK",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.fork_repos",
+            "args": [
+                "Spearhead-Odoo",
+                //"--repos", "account-budgeting",
+                //"--repos", "account-closing",
+                "--default-branch", "16.0",
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "Python: 6 Actualizar Todos los Remotos de Repositorios para YAML",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.update_all_remotes",
+            "args": [
+                "Spearhead-Odoo",
+                "--repos_yaml", "/mnt/respaldo/Doodba/doodba_odoo16/odoo/custom/src/repos.yaml",
+                "--default-branch", "16.0",
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "Python: 7 Actualizar Ultimo Commit de Repositorios para YAML",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.update_last_commit",
+            "args": [
+                "Spearhead-Odoo",
+                "--repos_yaml", "/mnt/respaldo/Doodba/doodba_odoo16/odoo/custom/src/repos.yaml",
+                "--default-branch", "16.0",
+            ],
+            "justMyCode": true
+        }
+    ]
+}
