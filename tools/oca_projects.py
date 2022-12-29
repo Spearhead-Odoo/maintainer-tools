@@ -229,14 +229,14 @@ OCA_PROJECTS = {
 def get_repositories():
     gh = login()
     all_repos = [
-        repo.name for repo in gh.repositories_by("OCA") if repo.name not in NOT_ADDONS
+        repo.name for repo in gh.repositories() if repo.name not in NOT_ADDONS
     ]
     return all_repos
 
 
 def get_repositories_and_branches(repos=(), branches=MAIN_BRANCHES, branch_filter=None):
     gh = login()
-    for repo in gh.repositories_by("OCA"):
+    for repo in gh.repositories():
         if repos and repo.name not in repos:
             continue
         if repo.name in NOT_ADDONS:
@@ -268,7 +268,7 @@ _URL_MAPPINGS = {
 }
 
 
-def url(project_name, protocol="git", org_name="OCA"):
+def url(project_name, protocol="git", org_name="Spearhead-Odoo"):
     """get the URL for an OCA project repository"""
     return _URL_MAPPINGS[protocol] % (org_name, project_name)
 
@@ -278,7 +278,7 @@ class BranchNotFoundError(RuntimeError):
 
 
 @contextmanager
-def temporary_clone(project_name, branch=None, protocol="git", org_name="OCA"):
+def temporary_clone(project_name, branch=None, protocol="git", org_name="Spearhead-Odoo"):
     """context manager that clones a git branch and cd to it, with cache"""
     # init cache directory
     cache_dir = appdirs.user_cache_dir("oca-mqt")
