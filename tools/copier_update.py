@@ -112,7 +112,7 @@ def main(
 ) -> None:
     for repo, branch in _iterate_repos_and_branches(repos, branches):
         try:
-            with temporary_clone(org_name=org, project_name=repo, branch=branch):
+            with temporary_clone(org_name=org, protocol="https", project_name=repo, branch=branch):
                 print("=" * 10, repo, branch, "=" * 10)
                 if git_user_name:
                     subprocess.check_call(
@@ -125,7 +125,7 @@ def main(
                 if not Path(".copier-answers.yml").exists():
                     print(f"Skipping {repo} because it has no .copier-answers.yml")
                     continue
-                r = subprocess.call(["copier", "-f", "update"])
+                r = subprocess.call(["copier", "update", "--trust", "-f"])
                 if r != 0:
                     print("$" * 10, f"copier update failed on {repo}")
                     continue
@@ -150,3 +150,6 @@ def main(
                     subprocess.check_call(["git", "push"])
         except BranchNotFoundError:
             pass
+
+if __name__ == '__main__':
+   main()

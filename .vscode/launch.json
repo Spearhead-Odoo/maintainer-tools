@@ -10,7 +10,7 @@
             "request": "launch",
             "module": "tools.create_branch",
             "args": [
-                "16.0", 
+                "17.0", 
                 "--org-name", "Spearhead-Odoo", 
                 "--copier-template-vcs-ref", "spearhead"],
             "justMyCode": true
@@ -21,7 +21,7 @@
             "request": "launch",
             "module": "tools.gen_addon_readme",
             "args": [
-                "--org-name", "Spearhead-Odoo", "--repo-name", "odoo_templates", "--branch", "16.0",
+                "--org-name", "Spearhead-Odoo", "--repo-name", "odoo_templates", "--branch", "17.0",
                 "--addons-dir", "/mnt/celm1990/Doodba/odoo16_ec/odoo/custom/src/localizacion", 
                 //"--addon-dir", "l10n_ec_extended"
             ],
@@ -48,7 +48,21 @@
                 "Spearhead-Odoo",
                 //"--repos", "account-budgeting",
                 //"--repos", "account-closing",
-                "--default-branch", "16.0",
+                //"--default-branch", "17.0",
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "Python: 5 Actualizar Copier Template",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.copier_update",
+            "args": [
+                "--org", "Spearhead-Odoo", 
+                "--repos", "localizacion_ec",
+                "--branches", "17.0", 
+                "--git-user-name", "odoo-ci-cd", 
+                "--git-user-email", "odoo.ci.cd@gmail.com",
             ],
             "justMyCode": true
         },
@@ -59,8 +73,8 @@
             "module": "tools.update_all_remotes",
             "args": [
                 "Spearhead-Odoo",
-                "--repos_yaml", "/mnt/respaldo/Doodba/doodba_odoo16/odoo/custom/src/repos.yaml",
-                "--default-branch", "16.0",
+                "--repos_yaml", "/mnt/respaldo/Doodba/doodba_odoo17_ec/odoo/custom/src/repos.yaml",
+                "--default-branch", "17.0",
             ],
             "justMyCode": true
         },
@@ -71,8 +85,20 @@
             "module": "tools.update_last_commit",
             "args": [
                 "Spearhead-Odoo",
-                "--repos_yaml", "/mnt/respaldo/Doodba/doodba_odoo16/odoo/custom/src/repos.yaml",
-                "--default-branch", "16.0",
+                "--repos_yaml", "/mnt/respaldo/Doodba/doodba_odoo17_ec/odoo/custom/src/repos.yaml",
+                "--default-branch", "17.0",
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "Python:8 Clonar todos los repos OCA",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.clone_everything",
+            "args": [
+                "--path", "/mnt/respaldo/OCA17",
+                "--organization-remotes", "spearhead",
+                "--target-branch", "17.0",
             ],
             "justMyCode": true
         }
