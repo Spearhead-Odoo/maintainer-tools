@@ -73,7 +73,7 @@
             "module": "tools.update_all_remotes",
             "args": [
                 "Spearhead-Odoo",
-                "--repos_yaml", "/mnt/respaldo/Doodba/doodba_odoo17_ec/odoo/custom/src/repos.yaml",
+                "--repos_yaml", "/mnt/respaldo/Doodba/doodba_odoo17_spearhead/odoo/custom/src/repos.yaml",
                 "--default-branch", "17.0",
             ],
             "justMyCode": true
@@ -85,7 +85,7 @@
             "module": "tools.update_last_commit",
             "args": [
                 "Spearhead-Odoo",
-                "--repos_yaml", "/mnt/respaldo/Doodba/doodba_odoo17_ec/odoo/custom/src/repos.yaml",
+                "--repos_yaml", "/mnt/respaldo/Doodba/doodba_odoo17_spearhead/odoo/custom/src/repos.yaml",
                 "--default-branch", "17.0",
             ],
             "justMyCode": true

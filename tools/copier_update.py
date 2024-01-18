@@ -125,7 +125,7 @@ def main(
                 if not Path(".copier-answers.yml").exists():
                     print(f"Skipping {repo} because it has no .copier-answers.yml")
                     continue
-                r = subprocess.call(["copier", "update", "--trust", "-f"])
+                r = subprocess.call(["copier", "update", "--trust", "--vcs-ref", "spearhead", "-f"])
                 if r != 0:
                     print("$" * 10, f"copier update failed on {repo}")
                     continue
