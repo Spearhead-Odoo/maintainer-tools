@@ -12,6 +12,7 @@ def clone(organization_remotes=None, remove_old_repos=False, target_branch=False
     for project in OCA_REPOSITORY_NAMES:
         if path:
             os.chdir(path)
+        print("Cloning %s ..." % project)
         cmd = ["git", "clone", "--quiet", url(project, protocol="https", org_name="OCA"), project]
         if target_branch:
             cmd += ["-b", target_branch]
@@ -37,12 +38,14 @@ def clone(organization_remotes=None, remove_old_repos=False, target_branch=False
                 ]
                 subprocess.call(cmd)
     if remove_old_repos:
+        print("Removing old repositories")
         for d in os.listdir("."):
             if (
                 d not in OCA_REPOSITORY_NAMES
                 and os.path.isdir(d)
                 and os.path.isdir(os.path.join(d, ".git"))
             ):
+                print("... removing %s" % d)
                 subprocess.check_call(["rm", "-fr", d])
 
 
