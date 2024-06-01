@@ -61,6 +61,7 @@
                 "--org", "Spearhead-Odoo", 
                 "--repos", "localizacion_ec",
                 "--branches", "17.0", 
+                "--git-protocol", "https",
                 "--git-user-name", "odoo-ci-cd", 
                 "--git-user-email", "odoo.ci.cd@gmail.com",
             ],

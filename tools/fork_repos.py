@@ -3,7 +3,7 @@
 import click
 
 from . import github_login
-from .oca_projects import OCA_PROJECTS
+from .oca_projects import OCA_REPOSITORY_NAMES
 
 
 @click.command("Create an Fork to new Organization")
@@ -20,10 +20,7 @@ from .oca_projects import OCA_PROJECTS
 def main(org_name, repos, default_branch=None):
     # Connect to GitHub
     github = github_login.login()
-    all_projects = []
-    for  oca_repos in OCA_PROJECTS.values():
-        all_projects += oca_repos
-    for repo_name in repos or all_projects:
+    for repo_name in repos or OCA_REPOSITORY_NAMES:
         if repo_name.startswith("l10n"):
             continue
         print("=" * 10, repo_name, "=" * 10)
