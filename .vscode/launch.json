@@ -59,7 +59,7 @@
             "module": "tools.copier_update",
             "args": [
                 "--org", "Spearhead-Odoo", 
-                "--repos", "localizacion_ec",
+                "--repos", "flow_scm,base_import_addons,odoo_addons,spearhead_addons,humane_addons,panatel_addons,apollo_addons",
                 "--branches", "17.0", 
                 "--git-protocol", "https",
                 "--git-user-name", "odoo-ci-cd", 
