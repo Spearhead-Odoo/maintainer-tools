@@ -102,6 +102,17 @@
                 "--target-branch", "17.0",
             ],
             "justMyCode": true
+        },
+        {
+            "name": "Python:9 Update default branch",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.update_default_branch",
+            "args": [
+                "Spearhead-Odoo",
+                "--default-branch", "17.0",
+            ],
+            "justMyCode": true
         }
     ]
 }
