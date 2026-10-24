@@ -10,9 +10,11 @@
             "request": "launch",
             "module": "tools.create_branch",
             "args": [
-                "17.0", 
+                "18.0", 
                 "--org-name", "Spearhead-Odoo", 
-                "--copier-template-vcs-ref", "spearhead"],
+                "--copier-template-vcs-ref", "spearhead",
+                "--repo", "flow_odoo",
+            ],
             "justMyCode": true
         },
         {
@@ -59,11 +61,12 @@
             "module": "tools.copier_update",
             "args": [
                 "--org", "Spearhead-Odoo", 
-                //"--repos", "flow_scm,base_import_addons,odoo_addons,apollo_addons,odoo_generic_addons",
-                //"--repos", "emecorp_odoo,flow_odoo,globalimport_odoo,humane_odoo,metanoia_odoo,panatel_odoo,rmc_odoo,spearhead_odoo",
-                // "--branches", "17.0", 
-                "--repos", "sunchodesa_odoo,dulcione_odoo,llanticentro_odoo",
-                "--branches", "13.0", 
+                //"--repos", "flow_scm,odoo_generic_addons",
+                //"--repos", "emecorp_odoo,flow_odoo,globalimport_odoo,humane_odoo,metanoia_odoo,panatel_odoo,rmc_odoo,spearhead_odoo,solaris_odoo,apolo_odoo,comsucre_odoo",
+                "--repos", "grupo_inproel_odoo,flow_odoo,globalimport_odoo,rmc_odoo",
+                "--branches", "18.0", 
+                //"--repos", "sunchodesa_odoo,dulcione_odoo,llanticentro_odoo,inproel_odoo,mirna_odoo,conaplas_odoo",
+                //"--branches", "13.0", 
                 "--git-protocol", "https",
                 "--git-user-name", "odoo-ci-cd", 
                 "--git-user-email", "odoo.ci.cd@gmail.com",
@@ -113,7 +116,7 @@
             "module": "tools.update_default_branch",
             "args": [
                 "Spearhead-Odoo",
-                "--default-branch", "17.0",
+                "--default-branch", "18.0",
             ],
             "justMyCode": true
         }
