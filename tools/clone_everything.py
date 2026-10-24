@@ -8,12 +8,20 @@ import subprocess
 from .oca_projects import OCA_REPOSITORY_NAMES, url
 
 
-def clone(organization_remotes=None, remove_old_repos=False, target_branch=False, path=None):
+def clone(
+    organization_remotes=None, remove_old_repos=False, target_branch=False, path=None
+):
     for project in OCA_REPOSITORY_NAMES:
         if path:
             os.chdir(path)
         print("Cloning %s ..." % project)
-        cmd = ["git", "clone", "--quiet", url(project, protocol="https", org_name="OCA"), project]
+        cmd = [
+            "git",
+            "clone",
+            "--quiet",
+            url(project, protocol="https", org_name="OCA"),
+            project,
+        ]
         if target_branch:
             cmd += ["-b", target_branch]
         try:

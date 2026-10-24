@@ -1,5 +1,5 @@
-"""Create a fork in all addons project.
-"""
+"""Create a fork in all addons project."""
+
 import click
 
 from . import github_login
@@ -31,7 +31,7 @@ def main(org_name, repos, default_branch=None):
         new_fork = repository.create_fork(org_name)
         if default_branch and default_branch in all_branches:
             new_fork.edit(name=repo_name, default_branch=default_branch)
-        
 
-if __name__ == '__main__':
-   main()
+
+if __name__ == "__main__":
+    main()

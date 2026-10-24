@@ -100,6 +100,25 @@ you can create them later.
 
 TIP to update branch in shell at once: `ls | xargs -I % git -C % pull origin branch_number`
 
+### Sync forks of OCA repositories
+
+The script `oca-sync-forks` keeps the forks of OCA repositories in another
+organization up to date, working on a directory of clones (e.g. created with
+`oca-clone-everything`).
+
+Add or update, in all the repositories, the remote pointing to the forks:
+
+    $ oca-sync-forks --base-dir /path/to/clones --org-name MyOrg --remote-name myorg set-remotes
+
+Then fetch OCA, fast-forward the local branches and push them to the forks
+(by default all the main branches, or the ones given with `--branches`):
+
+    $ oca-sync-forks --base-dir /path/to/clones --org-name MyOrg --remote-name myorg sync --branches 17.0,18.0
+
+Use `--repos` to limit to some repositories and `--dry-run` to only see what
+would be done. On https remotes the push is authenticated with the token of
+`oca-github-login`.
+
 
 ## Quality tools
 

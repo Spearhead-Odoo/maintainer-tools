@@ -119,6 +119,38 @@
                 "--default-branch", "18.0",
             ],
             "justMyCode": true
+        },
+        {
+            "name": "Python:10 Actualizar remoto de forks",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.sync_forks",
+            "args": [
+                "--base-dir", "/mnt/respaldo/OCA17",
+                "--org-name", "Spearhead-Odoo",
+                "--remote-name", "spearhead",
+                //"--repos", "sale-workflow",
+                "set-remotes",
+                //"--dry-run",
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "Python:11 Sincronizar forks desde OCA",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.sync_forks",
+            "args": [
+                "--base-dir", "/mnt/respaldo/OCA17",
+                "--org-name", "Spearhead-Odoo",
+                "--remote-name", "spearhead",
+                //"--repos", "account-financial-tools,web",
+                "sync",
+                "--branches", "14.0,15.0,16.0,17.0,18.0",
+                "--jobs", "4",
+                //"--dry-run",
+            ],
+            "justMyCode": true
         }
     ]
 }

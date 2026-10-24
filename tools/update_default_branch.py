@@ -1,9 +1,8 @@
-"""Set default branch to repos.
-"""
+"""Set default branch to repos."""
+
 import click
 
 from . import github_login
-from .oca_projects import OCA_REPOSITORY_NAMES
 
 
 @click.command("Set default branch to repos.")
@@ -34,7 +33,7 @@ def main(org_name, default_branch, repos=None):
             all_branches.append(branch.name)
         if default_branch and default_branch in all_branches:
             repository.edit(name=repo_name, default_branch=default_branch)
-        
 
-if __name__ == '__main__':
-   main()
+
+if __name__ == "__main__":
+    main()

@@ -3,6 +3,7 @@
 TODO
 - load copier answers from a previous branch
 """
+
 import subprocess
 
 import click
@@ -97,5 +98,6 @@ def main(new_branch, copier_template, copier_template_vcs_ref, repos, org_name):
             subprocess.check_call(["pre-commit", "run", "-a"])  # to be sure
             subprocess.check_call(["git", "push", "origin", new_branch])
 
-if __name__ == '__main__':
-   main()
+
+if __name__ == "__main__":
+    main()
