@@ -9,9 +9,13 @@
     $ cd maintainer-tools
     $ virtualenv env
     $ . env/bin/activate
-    $ python setup.py install
+    $ pip install -e .
 
-Alternatively if using pipx.
+Alternatively, you can install directly from PyPI:
+
+    $ pip install git+https://github.com/OCA/maintainer-tools 
+
+Or if using pipx:
 
     $ pipx install oca-maintainers-tools@git+https://github.com/OCA/maintainer-tools.git
 
@@ -32,6 +36,9 @@ Set and store the token to be used for Github auth using:
 
 Alternatively, the token can be set on the GITHUB_TOKEN environment variable.
 
+As a third alternative, if you have the [gh](https://cli.github.com/) client installed
+and have authenticated with `gh auth login`, maintainer tools will attempt to obtain the
+token from it using `gh auth token`.
 
 ### Sync team users from community.odoo.com to GitHub teams
 
@@ -104,7 +111,7 @@ You can leverage them to give more quality to your modules and to respect OCA gu
 
 To provide high quality README for our modules we generate them automatically.
 The sections of the final README are organized in fragments.
-They must be put inside a `readme` folder respecting [this structure|./readme].
+They must be put inside a `readme` folder respecting [this structure](./template/module/readme).
 
 eg.
 To generate the final README for the module `auth_keycloak`:
@@ -143,7 +150,7 @@ A custom icon can be added using the `--src-icon` argument:
 ## Developers
 
 As a developer, you want to launch the scripts without installing the
-egg.
+package in your system.
 
     $ git clone git@github.com:OCA/maintainer-tools.git
     $ cd maintainer-tools

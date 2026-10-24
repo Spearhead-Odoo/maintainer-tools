@@ -10,10 +10,10 @@ from pathlib import Path
 import pytest
 
 from tools.gen_addon_readme import (
+    _get_source_digest,
     get_fragment_format,
     get_fragments_format,
     safe_remove,
-    _get_source_digest,
 )
 
 
@@ -162,7 +162,10 @@ def test_rst_error(tmp_path):
                 cmd + opts, stderr=subprocess.STDOUT, universal_newlines=True
             )
         except subprocess.CalledProcessError as e:
-            assert "Title level inconsistent" in e.output
+            assert (
+                "Inconsistent title style" in e.output
+                or "Title level inconsistent" in e.output
+            )
         else:
             assert False, "A rst syntax error should have been detected."
 

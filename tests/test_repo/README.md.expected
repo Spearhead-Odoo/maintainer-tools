@@ -1,4 +1,4 @@
-[![Runbot Status](https://runbot.odoo-community.org/runbot/badge/flat/${REPO_ID}/${BRANCH_NAME}.svg)](https://runbot.odoo-community.org/runbot/repo/github-com-oca-${REPO_NAME}-${REPO_ID})
+
 [![Build Status](https://travis-ci.org/OCA/${REPO_NAME}.svg?branch=${BRANCH_NAME})](https://travis-ci.org/OCA/${REPO_NAME})
 [![Coverage Status](https://coveralls.io/repos/OCA/${REPO_NAME}/badge.svg?branch=${BRANCH_NAME})](https://coveralls.io/r/OCA/${REPO_NAME}?branch=${BRANCH_NAME})
 [![Code Climate](https://codeclimate.com/github/OCA/${REPO_NAME}/badges/gpa.svg)](https://codeclimate.com/github/OCA/${REPO_NAME})
@@ -13,7 +13,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[module1](module1/) | 8.0.1.0.0 | [![sbidoul](https://github.com/sbidoul.png?size=30px)](https://github.com/sbidoul) | Module 1 summary
+[module1](module1/) | 8.0.1.0.0 | <a href='https://github.com/sbidoul'><img src='https://github.com/sbidoul.png' width='32' height='32' style='border-radius:50%;' alt='sbidoul'/></a> | Module 1 summary
 
 
 Unported addons
