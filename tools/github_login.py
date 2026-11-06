@@ -16,7 +16,7 @@ class GitHubLoginError(RuntimeError):
     pass
 
 
-def login():
+def get_token():
     if os.environ.get("GITHUB_TOKEN"):
         token = os.environ["GITHUB_TOKEN"]
     else:
@@ -30,6 +30,11 @@ def login():
                 ).strip()
             except subprocess.SubprocessError:
                 pass
+    return token
+
+
+def login():
+    token = get_token()
     if not token:
         raise GitHubLoginError(
             "No token has been generated for this script. "
