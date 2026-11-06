@@ -8,10 +8,20 @@ import subprocess
 from .oca_projects import OCA_REPOSITORY_NAMES, url
 
 
-def clone(organization_remotes=None, remove_old_repos=False, target_branch=False):
+def clone(
+    organization_remotes=None, remove_old_repos=False, target_branch=False, path=None
+):
     for project in OCA_REPOSITORY_NAMES:
+        if path:
+            os.chdir(path)
         print("Cloning %s ..." % project)
-        cmd = ["git", "clone", "--quiet", url(project), project]
+        cmd = [
+            "git",
+            "clone",
+            "--quiet",
+            url(project, protocol="https", org_name="OCA"),
+            project,
+        ]
         if target_branch:
             cmd += ["-b", target_branch]
         try:
@@ -32,7 +42,7 @@ def clone(organization_remotes=None, remove_old_repos=False, target_branch=False
                     "remote",
                     "add",
                     organization_remote,
-                    url(project, org_name=organization_remote),
+                    url(project, protocol="https", org_name=organization_remote),
                 ]
                 subprocess.call(cmd)
     if remove_old_repos:
@@ -76,12 +86,17 @@ def main():
         dest="target_branch",
         help="Add this argument for specifying the branch you want to " "checkout.",
     )
+    parser.add_argument(
+        "--path",
+        dest="path",
+    )
     args = parser.parse_args()
     org_remotes = args.org_remotes and args.org_remotes[0] or None
     clone(
         organization_remotes=org_remotes,
         remove_old_repos=args.remove_old_repos,
         target_branch=args.target_branch,
+        path=args.path,
     )
 
 

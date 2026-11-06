@@ -132,6 +132,10 @@ def _fix_copier_answers():
 )
 @click.option("--skip-ci/--no-skip-ci", default=False)
 @click.option("--git-protocol", default="git", show_default=True)
+@click.option(
+    "--copier-template-vcs-ref",
+    help="Template git ref (branch/tag) to update to. Defaults to latest tag.",
+)
 def main(
     org: str,
     repos: str,
@@ -140,6 +144,7 @@ def main(
     git_user_email: str,
     skip_ci: bool,
     git_protocol: str,
+    copier_template_vcs_ref: Optional[str],
 ) -> None:
     for repo, branch in _iterate_repos_and_branches(repos, branches):
         try:
@@ -159,7 +164,10 @@ def main(
                     print(f"Skipping {repo} because it has no .copier-answers.yml")
                     continue
                 _fix_copier_answers()
-                r = subprocess.call(["copier", "update", "-f", "--trust"])
+                copier_cmd = ["copier", "update", "-f", "--trust"]
+                if copier_template_vcs_ref:
+                    copier_cmd += ["--vcs-ref", copier_template_vcs_ref]
+                r = subprocess.call(copier_cmd)
                 if r != 0:
                     print("$" * 10, f"copier update failed on {repo}")
                     continue
@@ -184,3 +192,7 @@ def main(
                     subprocess.check_call(["git", "push"])
         except BranchNotFoundError:
             pass
+
+
+if __name__ == "__main__":
+    main()
