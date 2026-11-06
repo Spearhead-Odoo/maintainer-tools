@@ -74,6 +74,7 @@ oca-copier-update = "tools.copier_update:main"
 oca-create-branch = "tools.create_branch:main"
 oca-create-branch-from-previous = "tools.create_branch_from_previous:main"
 oca-fork-repos = "tools.fork_repos:main"
+oca-update-default-branch = "tools.update_default_branch:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["tools"]
