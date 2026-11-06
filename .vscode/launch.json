@@ -1,0 +1,133 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: 1 Crear Nueva rama Vacia",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.create_branch",
+            "args": [
+                "18.0", 
+                "--org-name", "Spearhead-Odoo", 
+                "--copier-template-vcs-ref", "spearhead",
+                "--repo", "flow_odoo",
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "Python: 2 Generar README",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.gen_addon_readme",
+            "args": [
+                "--org-name", "Spearhead-Odoo", "--repo-name", "odoo_templates", "--branch", "17.0",
+                "--addons-dir", "/mnt/celm1990/Doodba/odoo16_ec/odoo/custom/src/localizacion", 
+                //"--addon-dir", "l10n_ec_extended"
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "Python: 3 Generar ChangeLOG",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.oca_towncrier",
+            "args": [
+                "--org", "Spearhead-Odoo", "--repo", "odoo_templates",
+                "--addon-dir", "/mnt/celm1990/Doodba/odoo16_ec/odoo/custom/src/localizacion/l10n_ec_delivery_note", 
+                //"--addon-dir", "l10n_ec_extended"
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "Python: 4 crear FORK",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.fork_repos",
+            "args": [
+                "Spearhead-Odoo",
+                //"--repos", "account-budgeting",
+                //"--repos", "account-closing",
+                //"--default-branch", "17.0",
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "Python: 5 Actualizar Copier Template",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.copier_update",
+            "args": [
+                "--org", "Spearhead-Odoo", 
+                //"--repos", "flow_scm,odoo_generic_addons",
+                //"--repos", "emecorp_odoo,flow_odoo,globalimport_odoo,humane_odoo,metanoia_odoo,panatel_odoo,rmc_odoo,spearhead_odoo,solaris_odoo,apolo_odoo,comsucre_odoo",
+                "--repos", "grupo_inproel_odoo,flow_odoo,globalimport_odoo,rmc_odoo",
+                "--branches", "18.0", 
+                //"--repos", "sunchodesa_odoo,dulcione_odoo,llanticentro_odoo,inproel_odoo,mirna_odoo,conaplas_odoo",
+                //"--branches", "13.0", 
+                "--git-protocol", "https",
+                "--git-user-name", "odoo-ci-cd", 
+                "--git-user-email", "odoo.ci.cd@gmail.com",
+                "--copier-template-vcs-ref", "custom",
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "Python:8 Clonar todos los repos OCA",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.clone_everything",
+            "args": [
+                "--path", "/mnt/respaldo/OCA17",
+                "--organization-remotes", "spearhead",
+                "--target-branch", "17.0",
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "Python:9 Update default branch",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.update_default_branch",
+            "args": [
+                "Spearhead-Odoo",
+                "--default-branch", "18.0",
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "Python:10 Actualizar remoto de forks",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.sync_forks",
+            "args": [
+                "--base-dir", "/mnt/respaldo/OCA17",
+                "--org-name", "Spearhead-Odoo",
+                "--remote-name", "spearhead",
+                //"--repos", "sale-workflow",
+                "set-remotes",
+                //"--dry-run",
+            ],
+            "justMyCode": true
+        },
+        {
+            "name": "Python:11 Sincronizar forks desde OCA",
+            "type": "python",
+            "request": "launch",
+            "module": "tools.sync_forks",
+            "args": [
+                "--base-dir", "/mnt/respaldo/OCA17",
+                "--org-name", "Spearhead-Odoo",
+                "--remote-name", "spearhead",
+                //"--repos", "account-financial-tools,web",
+                "sync",
+                "--branches", "14.0,15.0,16.0,17.0,18.0",
+                "--jobs", "4",
+                //"--dry-run",
+            ],
+            "justMyCode": true
+        }
+    ]
+}
